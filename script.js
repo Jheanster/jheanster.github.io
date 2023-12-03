@@ -156,7 +156,7 @@ function levelUp() {
         pauseBackgroundMusic();
         cancelAnimationFrame(rAF);
         level++;
-        scoreToNextLevel+= 1000; 
+        scoreToNextLevel = scoreToNextLevel + 1000 + (level * 500);
         
         const levelUpSound = document.getElementById('level-up-sound');
         levelUpSound.play();
