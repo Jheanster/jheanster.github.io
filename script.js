@@ -156,7 +156,7 @@ function levelUp() {
         pauseBackgroundMusic();
         cancelAnimationFrame(rAF);
         level++;
-        scoreToNextLevel+= 500 * level; 
+        scoreToNextLevel+= 1000; 
         
         const levelUpSound = document.getElementById('level-up-sound');
         levelUpSound.play();
@@ -411,7 +411,7 @@ function loop() {
         count = 0;
         
         // Changing falling speed based on level
-        fallingSpeed = Math.max(5,35 - level * 5);
+        fallingSpeed = Math.max(5,35 - level * 4);
 
         // place piece if it runs into anything
         if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {
