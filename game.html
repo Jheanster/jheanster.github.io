@@ -38,8 +38,8 @@
 
     #tutorial {
       position: absolute;
-      top: 10px; /* Adjust top positioning as needed */
-      left: 50px; /* Adjust left positioning as needed */
+      top: 20%; /* Adjust top positioning as needed */
+      left: 1%; /* Adjust left positioning as needed */
       color: white; /* Adjust text color as needed */
       font-family: 'Press2P';
       word-wrap: break-word;
@@ -52,6 +52,20 @@
         right: 10px; /* Adjust right positioning as needed */
         color: white; /* Adjust text color as needed */
         font-family: 'Press2P';
+    }
+
+    .next-tetromino-canvas {
+      margin-left: 50px
+    }
+
+    .game-button{
+      z-index: 2;
+    }
+
+    .sentence{
+      padding: 1rem;
+      margin-bottom: 15px;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -88,10 +102,13 @@
   </audio>
 
 
-  <canvas width="320" height="640" id="game"></canvas>
+
+  <div id="game-container">
+    <canvas width="320" height="640" id="game" style="z-index:1"></canvas>
+  </div>
+ 
   <div id="next-tetromino">
-    <span>Next:</span>
-    <canvas id="next-tetromino-canvas" width="160" height="160"></canvas>
+    <canvas id="next-tetromino-canvas" width="160" height="160" class="next-tetromino-canvas"></canvas>
   </div>
   
 
@@ -99,7 +116,23 @@
   <!-- Add this element to your HTML -->
   <div id="level">Level: 1</div>
 
-  <p id="tutorial">tutorial: I want this text to wrap in a container. How would I do that?</p>
+  <div id="tutorial">
+    <div class="sentence">
+    To rotate the pieces, press the up arrow key. 
+    </div>
+    <div class="sentence">
+      To move the pieces left and right, press the left and right arrow keys. 
+    </div>
+    <div class="sentence">
+      To bring the pieces down, press the down arrow key.
+    </div>
+    <div class="sentence">
+      You can pause the game by pressing the 'Esc' key.
+    </div>
+    <div class="sentence">
+      There are three levels to the game and a arcade mode that goes indefinitely. 
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

@@ -120,7 +120,7 @@ function placeTetromino() {
   score += 10;
   updateScoreDisplay();
 
-  if (score >= scoreToNextLevel) {
+  if (score >= scoreToNextLevel && wantToContinue === false) {
     levelUp();
   }
 
@@ -156,7 +156,7 @@ function levelUp() {
         pauseBackgroundMusic();
         cancelAnimationFrame(rAF);
         level++;
-        scoreToNextLevel+=1000; 
+        scoreToNextLevel+= 500 * level; 
         
         const levelUpSound = document.getElementById('level-up-sound');
         levelUpSound.play();
@@ -207,7 +207,6 @@ function levelUp() {
   
 // Function to restart the game
 function restartGame() {
-
     gameState = 'playing';
 
     const youWonSound = document.getElementById('you-won-sound');
@@ -242,6 +241,14 @@ function restartGame() {
 
 function continueGame() {
     gameState = 'playing';
+    console.log('Running continue Game function')
+
+    if(wantToContinue === true ){
+      const youWonSound = document.getElementById('you-won-sound');
+      youWonSound.pause();
+      youWonSound.currentTime = 0;
+    }
+    
 
     canvas.removeEventListener('click', continueGame);
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -366,7 +373,9 @@ function drawNextTetromino() {
       }
     }
   }
-  
+
+
+let wantToContinue = false 
 // game loop
 function loop() {
     playBackgroundMusic()
@@ -375,7 +384,7 @@ function loop() {
 
     drawNextTetromino();
 
-    if (level > 3 ) {
+    if (level > 3 && wantToContinue === false ) {
         showYouWonScreen();
         return;
     }
@@ -484,20 +493,46 @@ function showYouWonScreen() {
         context.textAlign = 'center';
         context.textBaseline = 'middle';
         context.fillText('YOU WON!', canvas.width / 2, canvas.height / 2);
-      
-        // Display a restart button or any other button for further action
-        context.fillStyle = 'rgba(0, 0, 0, 0)';
-        context.fillRect(canvas.width / 2 - 80, canvas.height / 2 + 40, 160, 40);
-        context.font = '20px Press2P';
-        context.fillStyle = 'white';
-        context.fillText('Restart', canvas.width / 2, canvas.height / 2 + 60);
-      
-        // Listen for click events on the restart button
-        canvas.addEventListener('click', restartGame);
+    
+        // Create container div for buttons
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style.position = 'absolute';
+        buttonContainer.style.transform = 'translate(-60%, 80%)';
+        buttonContainer.style.display = 'flex';
+        buttonContainer.style.flexDirection = 'column';
+        document.body.appendChild(buttonContainer);
+
+        // Display a Restart button
+        const restartButton = document.createElement('button');
+        restartButton.textContent = 'Restart';
+        restartButton.style.marginBottom = '15px'; // Adjust spacing between buttons
+        restartButton.style.marginTop = '20px'; // Adjust spacing between buttons
+        restartButton.style.font = '20px Press2P';
+        restartButton.style.background = 'rgba(255, 255, 255, 0)';
+        restartButton.style.color = 'white';
+        restartButton.style.border = 'none';
+        restartButton.addEventListener('click', function () {
+            buttonContainer.remove(); 
+            restartGame();
+        });
+        buttonContainer.appendChild(restartButton);
+
+        // Display a Continue button
+        const continueButton = document.createElement('button');
+        continueButton.textContent = 'Continue';
+        continueButton.style.color = 'white';
+        continueButton.style.font = '20px Press2P';
+        continueButton.style.background = 'rgba(255, 255, 255, 0)';
+        continueButton.style.border = 'none';
+        continueButton.addEventListener('click', function () {
+            console.log('Continue pressed')
+            buttonContainer.remove(); 
+            wantToContinue = true;
+            continueGame();
+        });
+        buttonContainer.appendChild(continueButton);
     }
 }
-  
-
 
 let isPaused = false;
 
