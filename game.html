@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Tetris HTML Game</title>
+  <meta charset="UTF-8">
+  <style>
+
+    @font-face {
+      font-family: 'Press2P'; 
+      src: url('PressStart2P-vaV7.ttf');
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Press2P'
+    }
+
+    body {
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative; /* Added positioning */
+    }
+
+    canvas {
+      border: 1px solid white;
+    }
+
+    #score {
+      position: absolute; /* Added positioning */
+      top: 10px; /* Adjust top positioning as needed */
+      right: 10px; /* Adjust right positioning as needed */
+      color: white; /* Adjust text color as needed */
+      font-family: 'Press2P';
+    }
+
+    #tutorial {
+      position: absolute;
+      top: 10px; /* Adjust top positioning as needed */
+      left: 50px; /* Adjust left positioning as needed */
+      color: white; /* Adjust text color as needed */
+      font-family: 'Press2P';
+      word-wrap: break-word;
+      max-width: 30%;
+    }
+
+    #level {
+        position: absolute; /* Added positioning */
+        top: 50px; /* Adjust top positioning as needed */
+        right: 10px; /* Adjust right positioning as needed */
+        color: white; /* Adjust text color as needed */
+        font-family: 'Press2P';
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="level-1-song" loop>
+    <source src="music/03. A-Type Music (Korobeiniki).mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="level-2-song" loop>
+    <source src="music/04. B-Type Music.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="level-3-song" loop>
+    <source src="music/05. C-Type Music.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="game-over-sound">
+    <source src="music/18. Game Over.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="level-up-sound">
+    <source src="music/08. Stage Clear.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="you-won-sound">
+    <source src="music/09. Ending.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+
+  <canvas width="320" height="640" id="game"></canvas>
+  <div id="next-tetromino">
+    <span>Next:</span>
+    <canvas id="next-tetromino-canvas" width="160" height="160"></canvas>
+  </div>
+  
+
+  <p id="score">Score: 0</p>
+  <!-- Add this element to your HTML -->
+  <div id="level">Level: 1</div>
+
+  <p id="tutorial">tutorial: I want this text to wrap in a container. How would I do that?</p>
+  <script src="script.js"></script>
+</body>
+</html>

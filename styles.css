@@ -1,0 +1,40 @@
+/* Add your CSS styles for both screens here */
+
+@font-face {
+    font-family: 'Press2P'; 
+    src: url('PressStart2P-vaV7.ttf');
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: 'Press2P';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  
+  
+  .title-screen {
+    text-align: center;
+  }
+  
+  button {
+    font-size: 20px;
+    padding: 20px 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-family: 'Press2P';
+    margin-top: 2rem;
+  }
+  
+  button:hover {
+    background-color: white;
+    color: black;
+  }
+  
