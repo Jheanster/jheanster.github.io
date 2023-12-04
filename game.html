@@ -14,7 +14,7 @@
     html, body {
       height: 100%;
       margin: 0;
-      font-family: 'Press2P'
+      font-family: 'Press2P';
     }
 
     body {
@@ -23,16 +23,25 @@
       align-items: center;
       justify-content: center;
       position: relative; /* Added positioning */
+      background-image: url('video-games-zoom-background-s866vl508j2ziv5p.jpg');
     }
 
     canvas {
       border: 1px solid white;
+      background-color: black;
+    }
+
+    .game-info{
+      border: 1px solid white;
+      background-color: black;
+      position: absolute; /* Added positioning */
+      top: 50px; /* Adjust top positioning as needed */
+      right: 10px; /* Adjust right positioning as needed */
+      padding: 15px;
+      margin: 20px;
     }
 
     #score {
-      position: absolute; /* Added positioning */
-      top: 10px; /* Adjust top positioning as needed */
-      right: 10px; /* Adjust right positioning as needed */
       color: white; /* Adjust text color as needed */
       font-family: 'Press2P';
     }
@@ -45,12 +54,11 @@
       font-family: 'Press2P';
       word-wrap: break-word;
       max-width: 30%;
+      background-color: black;
+      border: 1px solid white;
     }
 
     #level {
-        position: absolute; /* Added positioning */
-        top: 50px; /* Adjust top positioning as needed */
-        right: 10px; /* Adjust right positioning as needed */
         color: white; /* Adjust text color as needed */
         font-family: 'Press2P';
     }
@@ -112,10 +120,12 @@
     <canvas id="next-tetromino-canvas" width="160" height="160" class="next-tetromino-canvas"></canvas>
   </div>
   
-
-  <p id="score">Score: 0</p>
-  <!-- Add this element to your HTML -->
-  <div id="level">Level: 1</div>
+  <div class="game-info">
+    <p id="score">Score: 0</p>
+    <div id="level">Level: 1</div>
+  </div>
+    
+  
 
   <div id="tutorial">
     <div class="sentence">
